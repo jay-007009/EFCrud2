@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EFCrud.Models.Employee>
+@{
+    ViewData["Title"] = "EmployeeList";
+}
+
+<h1>EmployeeList</h1>
+<p class="float-right">
+    <a asp-action="Create" class="=btn btn-primary">Add New</a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaritalStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+               Action
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+            {
+        <tr>
+          
+            <td>
+                @Html.DisplayNameFor(modelitem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(modelitem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(modelitem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayNameFor(modelitem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayNameFor(modelitem => item.MaritalStatus)
+            </td>
+            <td>
+                @Html.DisplayNameFor(modelitem => item.Gender)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Create", new { id = item.EmployeeId,item.FirstName,
+               item.LastName, item.Age,item.MaritalStatus,item.Gender,
+               item.DepartmentId },new { @class="btn btn-success"})|
+                @*@Html.ActionLink("Details", "Details", new {/*id=item.PrimaryKey*/ })|*@
+                @Html.ActionLink("Delete", "DeleteEmployee", new { }, new { @class = "btn btn-danger",onclick="return confirm('Do you want to Delete this?')" })
+            </td>
+        </tr>
+            }
+    </tbody>
+</table>
